@@ -1,0 +1,21 @@
+import { createFileRoute } from "@tanstack/react-router";
+import leadershipAsset from "@/assets/lean-edge-leadership.jpg.asset.json";
+import { CtaBand, PageIntro } from "@/components/site-layout";
+
+export const Route = createFileRoute("/about")({
+  head: () => ({ meta: [
+    { title: "About Lean Edge Solutions" },
+    { name: "description", content: "A practical operational excellence and leadership consultancy grounded in real-world manufacturing experience." },
+    { property: "og:title", content: "About Lean Edge Solutions" },
+    { property: "og:description", content: "Real-world operational experience, practical solutions and sustainable improvement." },
+    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
+  ] }), component: AboutPage,
+});
+const engagements=["Operational health checks and diagnostic assessments","Value Stream Mapping workshops and future state design","90-day operational improvement programmes","Performance board and daily management implementation","Factory layout, flow and capacity improvement","Root-cause and recurring problem elimination","Leadership alignment and management system development","Support for growth, change or operational transformation"];
+function AboutPage(){return <>
+  <PageIntro eyebrow="Who we are" title="Real-world experience, not theory for theory’s sake."><p>Lean Edge Solutions is an operational excellence and leadership consultancy focused on helping businesses improve the way they work, lead and perform.</p></PageIntro>
+  <section className="bg-background py-20 md:py-28"><div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-2 lg:items-center lg:px-8"><div><p className="section-label">Alongside your team</p><h2 className="mt-5 font-display text-4xl font-bold">Improvement that works in the real world.</h2><p className="mt-6 text-lg leading-8 text-muted-foreground">We work alongside leadership teams and the people closest to the process to identify what is holding performance back, create practical solutions and build the capacity required to sustain improvement.</p><p className="mt-5 leading-7 text-muted-foreground">That means solutions operators can use, managers can lead and business owners can measure.</p></div><img src={leadershipAsset.url} alt="Manufacturing leadership team reviewing performance together" loading="lazy" width={1400} height={1000} className="aspect-[7/5] w-full object-cover" /></div></section>
+  <section className="bg-foreground py-20 text-background"><div className="mx-auto grid max-w-7xl gap-px px-5 md:grid-cols-3 lg:px-8">{[["01","Practical","Hands-on support built around the reality of your operation."],["02","Measurable","Clear actions and outcomes linked to business performance."],["03","Sustainable","Capability and systems that remain after the consultancy ends."]].map(([n,t,c])=><article key={n} className="border-t border-background/20 py-8 md:border-r md:border-t-0 md:px-8 md:first:pl-0 md:last:border-r-0"><p className="font-display text-4xl font-bold text-accent">{n}.</p><h2 className="mt-8 font-display text-2xl font-bold">{t}</h2><p className="mt-3 leading-7 text-background/65">{c}</p></article>)}</div></section>
+  <section className="bg-secondary py-20 md:py-28"><div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[.75fr_1.25fr] lg:px-8"><div><p className="section-label">Typical engagements</p><h2 className="mt-5 font-display text-4xl font-bold">Focused support where it counts.</h2><p className="mt-5 leading-7 text-muted-foreground">For manufacturing, engineering and operationally intensive businesses facing growth, pressure or recurring problems.</p></div><ol className="grid gap-px bg-border sm:grid-cols-2">{engagements.map((item,i)=><li key={item} className="flex gap-4 bg-secondary p-5"><span className="font-display text-sm font-bold text-primary">{String(i+1).padStart(2,"0")}</span><span className="text-sm leading-6">{item}</span></li>)}</ol></div></section>
+  <CtaBand title="Build capability that lasts." />
+  </>}
